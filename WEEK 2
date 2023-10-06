@@ -1,1 +1,248 @@
+ Java script Intermediate
+Week2 Day1- Day5
+File objects 
+FileReader 
+	FileReader is an object used to read data from Blob and File objects.
+	It provides methods to read data in different formats, such as binary, text, and base64 data URL. 
+	The choice of method depends on the desired format and how the data will be used. 
+	As the reading process proceeds, events like loadstart, progress, load, abort, error, and loadend occur.
+	After the reading is finished, the result can be accessed through `reader.result` if successful, or `reader.error` if there was an error. 
+	The most used events are load and error.
+Fetch 
+•	JavaScript can send network requests to the server and load new information without reloading the page, thanks to the concept of AJAX (Asynchronous JavaScript and XML).
+•	AJAX allows us to submit orders, load user information, and receive updates from the server seamlessly.
+•	The fetch() method is commonly used for making network requests in modern JavaScript applications. It is a versatile method that has evolved over the years and is well-supported by browsers. 
+•	The basic syntax of fetch() is to provide the URL to access and optional parameters like method and headers.
+•	When a fetch() request is made, the browser immediately starts the request and returns a promise. The promise resolves with a Response object when the server responds with headers.
+•	At this stage, we can check the HTTP status, examine headers, but we don’t have access to the response body yet.
+
+•	If the fetch() request encounters network problems or cannot make the HTTP request, the promise will reject. 
+•	This includes cases where the site doesn’t exist or HTTP errors like 404 or 500 occur. These errors are considered normal flow and can be handled accordingly.
+
+In summary, JavaScript’s fetch() method is a powerful tool for sending network requests and retrieving information from the server without reloading the page. It provides flexibility and allows for efficient communication between the client and server.
+Post request 
+To make a POST request, or a request with another method, we need to use fetch options:
+o	method – HTTP-method, e.g. POST,
+o	body – one of:
+	a string (e.g. JSON),
+	FormData object, to submit the data as form/multipart,
+	Blob/BufferSource to send binary data,
+	URLSearchParams, to submit the data in x-www-form-urlencoded encoding, rarely used.
+For example, this code submits user object as JSON:
+ 
+Please note, if the body is a string, then Content-Typeis set to text/plain;charset=UTF-8 by default. So, we use headers option to send application/jsoninstead, that’s the correct content type for JSON-encoded data
+Cross-origin requests 
+
+	Cross-origin requests in JavaScript refer to the process of making HTTP requests from one domain to another domain. 
+	These requests are subject to security restrictions enforced by web browsers to prevent potential security vulnerabilities. 
+	The Same-Origin Policy dictates that a web page can only make requests to the same origin from which it was loaded unless certain conditions are met. 
+	Cross-origin requests require special headers to be included in the request and response to comply with the Cross-Origin Resource Sharing (CORS) policy.
+	CORS is a security mechanism that allows servers to explicitly specify which domains are allowed to make cross-origin requests and what types of requests are permitted.
+	When a cross-origin request is made, the browser includes an Origin header in the request to indicate the domain from which the request originated. 
+	The server then determines whether to allow the request based on the Access-Control-Allow-Origin header in the response.
+	If the server allows the request, it includes the Access-Control-Allow-Origin header with a value that matches the requesting domain or a wildcard (*) to allow requests from any domain.
+	There are two types of CORS requests: simple requests and non-simple requests.
+	Simple requests meet certain criteria, such as using common HTTP methods like GET, HEAD, or POST, and sending certain types of data. 
+	They do not trigger a preflight CORS check. Non-simple requests, on the other hand, involve more complex operations, additional headers, or request methods other than GET or POST. 
+	They may require a preflight request to check with the server whether the actual request should be permitted.
+	In the context of forms, cross-origin issues may arise when attempting to submit a form to a different origin than the one from which the web page originated. 
+	This is considered a cross-origin request. To handle cross-origin form submissions, the server must include appropriate CORS headers in its response to allow the request.
+	Without proper CORS configuration, the browser will block the form submission.
+	By default, when a request is made from one website to another using JavaScript, it does not include any user credentials like cookies or HTTP authentication. 
+	This is a security measure to prevent unauthorized access to sensitive user information.
+	If a website wants to allow requests from a different origin with credentials, it must include the “Access-Control-Allow-Credentials: true” header in its response.
+	To send credentials with a JavaScript request, the “credentials” option must be set to “include” in the fetch request.
+	Overall, cross-origin requests in JavaScript can be allowed by using the CORS mechanism if the server is configured to permit them.
+	Otherwise, the browser will block the requests due to security concerns.
+	Developers need to be aware of these restrictions and configure their servers and client-side code accordingly to enable safe cross-origin communication.
+Form data
+	The “FormData” object is used to represent the data in an HTML form. 
+	It provides a convenient way to capture and manipulate form fields. 
+	One unique feature of “FormData” is that it can be used as a request body in network methods like “fetch”. 
+	When used in this way, it is encoded and sent with the “Content-Type: multipart/form-data” header, making it appear as a regular form submission to the server.
+
+
+
+	You can create a “FormData” object by providing an HTML form element as an argument, which will automatically capture the form’s fields. 
+	Alternatively, you can manually build a “FormData” object by appending fields using methods like “append” and “set”. You can also manipulate the fields using methods like “delete”, “get”, and “has”. The “set” method can be used to remove existing fields with the same name and add a new one.
+	To loop through the fields in a “FormData” object, you can use a “for..of” loop. 
+	When sending a form with a file, the form is always sent as “multipart/form-data”, allowing file uploads. 
+	File inputs `<input type=”file”>` are treated similarly to regular form fields. If you need to send dynamically generated binary data, such as an image, as part of the form, you can do so using 
+
+Pattern and flags
+	A regular expression  consists of patterns and flags.
+	The pattern is used to search for and replace characters in a  string.
+	Then we have a regular expression object, it is a regular expression with added properties and methods
+	There are two  syntax that can create the regular expression( long and short)
+Syntax: below is a long syntax
+ 
+Syntax: below is a short syntax, we use the slashes “/”
+•	 
+•	The slashes play the  same  role as the quotes in a  strig, they tell JavaScript that  we are creating a regular expression.
+•	In both cases the regexp becomes an instance of the built-in Regexp  class.
+•	The difference between the two syntax is that the pattern that uses the slashes  dose not allow expressions  to be inserted , they are fully static.
+Usage:
+	We have mentioned that  expressions are integrated with string methods
+	In order to  search  inside a  string, we can use method search.
+	If the method is str.match(regexp) it finds all matches of regexp in the string
+	But if the regular expression has flag “g”, it returns an array of all matches.
+	Example: the below  example it will return the position of the string which is 2.
+let str = "I love JavaScript!"; // will search here 
+let regexp = /love/;
+alert( str.search(regexp) );
+
+searching for /love/ is the same as searching for ”love”
+let str = "I love JavaScript!"; // will search here
+let substr = 'love';
+alert( str.search(substr) ); // 2 
+
+Example: it will return an array of all matches
+ 
+Output:
+ 
+
+Colors:
+From here on the color scheme is:
+o	regexp – red
+o	string (where we search) – blue
+o	result – green
+when to use new RegExp:
+Normally we use the short syntax /.../. But it does not support variable insertions ${...}.
+On the other hand, new RegExp allows to construct a pattern dynamically from a string, so it’s more flexible.
+Example of a dynamically generated regexp:
+let tag = prompt("Which tag you want to search?", "h2");
+let regexp = new RegExp(<${tag}>);
+// finds <h2> by default
+alert( "<h1> <h2> <h3>".search(regexp));
+
+Flags:
+•	Regular  expression has flags that affect the search
+•	There are six of them in JavaScript
+o	i: with this search is case-insensitive: there is no  difference between A and a
+o	g: the search looks for  all matches without the only the first one.
+o	m:  this is the multiline mode.
+o	s: Do tall mode allows , to match newlines.
+o	u:  it enables the full Unicode support. The flag enables  correct processing of surrogate pairs.
+o	y: sticky mode 
+•	Simple  flag example:
+let str = "I love JavaScript!";
+alert( str.search(/LOVE/i) ); // 2 (found lowercased)
+alert( str.search(/LOVE/) ); // -1 (nothing found without 'i' flag)
+so, the I flag already make regular  expressions more powerful than simple substring search
+Method of RegExp and  String:
+Searching for All Matches:
+
+•	Use /g flag with str.match(reg) to get a flat array of matches.
+•	Use str.matchAll(reg) to get an iterable with all matches and their details.
+•	Searching for the First Match Only:
+
+•	Use str.match(reg) without the /g flag to find the first match with details.
+•	Use str.search(reg) to get the position of the first match.
+•	Use regexp.test(str) to check if there's a match.
+•	Use regexp.exec(str) and set regexp.lastIndex to start searching from a specific position.
+•	Replacing All Matches:
+
+•	Use str.replace(reg, str|func) to replace all matches with another string or a function result.
+•	Splitting a String by a Separator:
+
+•	Use str.split(str|reg) to split the string by a substring or a regular expression.
+•	Additional Notes:
+
+•	When using str.match(reg) with the /g flag, it returns an array of all matches without details.
+•	str.matchAll(reg) returns an iterable, and you can use for..of or Array.from(result) to work with the matches.
+•	str.replace() can be used with a function as the second argument for more complex replacements.
+•	regexp.exec(str) is a flexible searching method that can be used to find matches and their details in a loop.
+Character classes:
+•	A character class is a special notation that matches any symbol from a certain set.
+•	Let’s explore a “digit” class. It’s written as \d. We put it in the pattern, that means “any single digit”.
+Example:
+ let’s find the first digit in the phone number:
+let str = "+7(903)-123-45-67";
+let reg = /\d/;
+alert( str.match(reg) ); // 7
+•	Without the flag g, the regular expression only looks for the first match, that is the first digit \d.
+Example when  we add g:
+let str = "+7(903)-123-45-67";
+let reg = /\d/g;
+alert( str.match(reg) ); // array of matches: 7,9,0,3,1,2,3,4,5,6,7
+alert( str.match(reg).join('') ); // 79035419441
+Word Boundary\B:
+	A word boundary \b – is a special character class.
+	It does not denote a character, but rather a boundary between characters.
+Example:
+alert( "Hello, Java!".match(/\bJava\b/) ); // Java
+alert( "Hello, JavaScript!".match(/\bJava\b/) ); // null
+•	A word boundary, denoted by \b, is a zero-width assertion in a regular expression.
+•	It is used to test whether a position in a string is at a word boundary, which means it checks for three conditions:
+1.	Immediately before is a word character (\w), and immediately after is not a word character (or vice versa).
+2.	It's at the start of the string, and the first character is a word character.
+3.	It's at the end of the string, and the last character is a word character.
+•	Word boundaries are commonly used to find standalone words in text, ensuring that a word is not part of a larger word.
+•	Word boundaries do not add any characters to the match result; they are only used as a test.
+•	Word boundaries work well for English words and characters defined by \w, which includes English letters, digits, and underscores.
+•	They may not work as expected for non-Latin alphabets, as \w is primarily designed for English letters.
+In summary, \b is a useful tool for matching whole words or ensuring that a pattern is surrounded by non-word characters, but it's important to consider the character set and language when using it with non-Latin alphabets.
+
+Inverse classes:
+	For every character class there exists an “inverse class”, denoted with the same letter, but uppercased.
+	The “reverse” means that it matches all other characters, for instance:
+o	\D
+Non-digit: any character except \d, for instance a letter
+o	\S
+Non-space: any character except \s, for instance a letter.
+o	\W
+Non-wordly character: anything but \w.
+o	\B
+Non-boundary: a test reverse to \b.
+•	Non-boundary, denoted by \D, is a regular expression pattern that matches any character that is not a digit.
+•	It is the reverse of the word boundary (\b) concept. While \b checks for word boundaries, \D checks for non-digit characters.
+•	To extract all digits from a string, you can use the \D pattern in conjunction with the replace() method.
+•	By applying str.replace(/\D/g, ""), you effectively remove all non-digit characters from the string, leaving only the digits behind.
+•	This is a concise and efficient way to obtain a string containing only the digits from a larger string.
+•	In the example provided, it extracts the digits from the phone number "+7(903)-123-45-67," resulting in "79031234567."
+In summary, \D is a valuable tool for removing non-digit characters from a string, making it useful for tasks like extracting numeric data from mixed-content strings.
+Spaces are regular characters:
+
+Spaces in regular expressions are treated as ordinary characters, just like any other character in the pattern.
+•	If you want to match spaces in a string, you need to include them explicitly in your regular expression pattern.
+•	Omitting spaces from your regular expression pattern can cause it to fail to match spaces in the input string.
+•	In the example provided, "1 - 5".match(/\d-\d/) fails to match because it looks for digits separated by a dash without spaces, while "1 - 5".match(/\d - \d/) succeeds because it includes spaces in the pattern.
+•	Extra characters, including spaces, must be accounted for in the regular expression to ensure a successful match.
+•	Remember that in regular expressions, every character in the pattern matters, including spaces.
+A Dot is any character:
+•	The dot (.) is a special character in regular expressions that matches any character except a newline character (\n).
+•	It can be used in a regular expression pattern to represent a placeholder for any single character.
+•	When you use the dot in a regular expression, it will match any character, including letters, digits, symbols, spaces, or any other character, except for newline characters.
+•	In the provided examples, "Z".match(/./) successfully matches the letter "Z" because the dot matches any character.
+•	The dot can be used within a regular expression pattern, such as /CS.4/, to match a specific sequence of characters followed by any character.
+•	It's important to note that the dot does not match the absence of a character. There must be at least one character in the input string for the dot to match successfully.
+•	In the example "CS4".match(/CS.4/), there's no match because there is no character between "CS" and "4".
+The DotTall “s” Flag:
+•	By default, the dot (.) in a regular expression matches any character except a newline.
+•	To make the dot match any character, including newline characters, you can use the s flag (also known as the "dotall" flag) in your regular expression pattern.
+•	The s flag changes the behaviour of the dot to match literally any character, including newlines.
+•	For example, /A.B/s will match "A", any character (including newline), and then "B" in the input string.
+•	Without the s flag, newline characters are excluded from what the dot matches, which can sometimes be inconvenient when you want to match any character, newline included.
+Escaping special characters:
+In regular expressions, special characters have special meanings and are used to perform more powerful searches. Here is a summary of how to handle special characters in regular expressions:
+
+1. **Escaping**: To use a special character as a regular character, prepend it with a backslash `\`. This is called "escaping a character". For example, to match a dot `.` literally, use `\.`.
+2. **Parentheses**: Parentheses are also special characters in regular expressions. If you want to match parentheses as regular characters, use `\(` and `\)`. For example, to match the string "g()", use `/g/`.
+3. **Backslash**: If you want to match a backslash `\` itself, you need to double it. Use `\\` to match a backslash. For example, to match the string "1\2", use `/\\/`.
+4. **Slash**: In JavaScript, the slash `/` is used to open and close regular expressions. If you want to match a slash as a regular character, use `\/`. For example, to match a slash `/`, use `/\\//`. However, if you are creating a regular expression using the `new RegExp` constructor, you don't need to escape the slash.
+5. **new RegExp**: When creating a regular expression with the `new RegExp` constructor, backslashes need to be escaped twice. This is because regular strings have their own special characters that consume backslashes. To match a backslash, you need to use `\\` in the regular expression string. For example, to match a digit followed by a dot, use `let reg = new RegExp("\\d\\.\\d")`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
