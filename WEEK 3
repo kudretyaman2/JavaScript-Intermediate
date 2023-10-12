@@ -1,2 +1,142 @@
-# JavaScript-Intermediate
-Commit weekly work
+# JavaScript-Intermediate week3
+Intoduction to node js
+
+
+Js intermediate 
+Week 3
+Mkdir- make directory
+What is Node JS
+•	is an open-source, server-side JavaScript runtime environment that allows you to execute JavaScript code outside of a web browser.
+•	is commonly used to build web servers, APIs, real-time applications like chat applications and online games, microservices architectures, and various types of server-side applications.
+•	Node has a huge amount of third-party package and tool to help.
+NODE JS LIBRARIES :
+Fun and games with node js:
+Node.js can be used for fun and game development in various ways:
+1. Real-time Multiplayer Games: Node.js is great for building real-time multiplayer games using frameworks like Socket.IO.
+2. Game Servers: Node.js can be used to create game servers that handle game logic, matchmaking, and player interactions using frameworks like Express.js or Nest.js.
+3. Chatbots and Game AI: Node.js can be used to build chatbots or game AI that interact with players, using libraries like Botpress or Dialogflow.
+4. Game Analytics: Node.js can collect and analyze game data, such as player behavior and performance, using analytics platforms like Google Analytics.
+5. Game Development Tools: Node.js has a rich ecosystem of libraries and tools for game development, including bundling tools like webpack and game development libraries like Phaser or Pixi.js.
+
+What is a node JS Module: 
+	A Node module is a reusable piece of code that encapsulates specific functionality and can be easily imported and used in a Node.js application
+	It is essentially a JavaScript file that export functions, objects or classes that can be imported into other files using the require function.
+Example of a simple node Module:
+// math.js
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+
+module.exports = {
+  add,
+  subtract,
+};
+
+The Node JS Libraries:
+
+Day 2 – Node JS Libraries
+Core Libraries:
+-	Node.js provides a set of core libraries for essential functions.
+-	These include libraries for file system operations, network communication, and more.
+-	Core libraries are available by default and don't require additional installation.
+Third-party Libraries:
+-	Node.js has a vast ecosystem of third-party libraries available via npm (Node Package Manager).
+-	Developers can easily install and manage these libraries to extend functionality.
+-	Common libraries include Express.js for web application development, Socket.io for real-time communication, and Mongoose for MongoDB interactions.
+Modules:
+-	Node.js promotes modularity through the CommonJS module system.
+-	Modules encapsulate code into reusable units, enhancing code organization.
+-	The ‘require’ function is used to import modules.
+Socket.io:
+-	Enables real-time, bidirectional communication between the server and clients.
+-	Popular for chat applications, online gaming, and other real-time features.
+-	Supports WebSocket and other transport mechanisms.
+
+ 	Web Frameworks:
+
+o	Express.js: A minimal and flexible web application framework for building web and mobile applications.
+o	Koa.js: A lightweight and modern web framework designed by the creators of Express.js.
+o	Nest.js: A progressive Node.js framework for building efficient, reliable, and scalable server-side applications.
+ 	Database Connectivity:
+
+o	Mongoose: An elegant ODM (Object-Document Mapping) library for MongoDB.
+o	Sequelize: An ORM (Object-Relational Mapping) library for SQL databases such as MySQL, PostgreSQL, and SQLite.
+ 	Utility Libraries:
+
+o	Lodash: A utility library that provides many helpful functions for working with arrays, objects, and more.
+o	Moment.js: A library for parsing, formatting, and manipulating dates and times.
+o	HTTP Request and Response Handling:
+o	Axios: A promise-based HTTP client for making HTTP requests.
+o	node-fetch: A native JavaScript fetch API implementation for Node.js.
+ 	Authentication and Authorization:
+o	
+o	Passport.js: A widely used authentication middleware for Node.js applications.
+o	jsonwebtoken: A library for creating and verifying JSON Web Tokens (JWTs) for user authentication.
+ 	WebSocket Libraries:
+
+o	Socket.io: A real-time bidirectional communication library that works over WebSockets.
+o	ws: A simple WebSocket library for Node.js.
+ 	Template Engines:
+
+o	EJS (Embedded JavaScript): A template engine that lets you generate HTML with plain JavaScript.
+ 	Handlebars: A templating engine that allows you to build semantic templates using a simple handlebars syntax.
+ 	Testing Frameworks:
+o	Mocha: A flexible and feature-rich testing framework.
+o	Jest: A zero-config JavaScript testing framework with a focus on simplicity.
+
+
+Day 4 – Assigning a Sprite
+Introduction to Sprites:
+-	Sprites are a graphic or image component used in computer graphics and game development.
+-	They are often used to represent objects, characters, or elements in a 2D or 3D environment.
+-	Sprites are usually small, 2D images or animations.
+Types of Sprites:
+-	Static Sprites: Non-animated images representing objects or characters.
+-	Animated Sprites: Sequences of images used to create animations.
+-	Tile Sprites: Grid-based sprites used for tile-based games.
+Usage in 2D Games:
+-	Sprites play a central role in 2D game development.
+-	They are used to display characters, objects, backgrounds, and more.
+-	Sprites can be manipulated to create animations and respond to user input.
+
+Sprites are a fundamental component in graphics, gaming, and web development. They serve a variety of purposes, from representing game characters to enhancing user interfaces. Proper sprite management and optimization are key to creating visually engaging and responsive experiences
+
+•	What is Node JS?
+Is an open-source server environment.
+•	How is Node JS initiated on a computer?
+Though the command line interface.
+•	Why do we use Node JS?
+Node Js is asynchronous.
+•	What can Node JS do?
+Node js can send dynamic content.
+Node js contains some tsk that can be executed on certain events e.g someone trying to access a port o the server. 
+•	What is a module in Node JS the same as in JavaScript?
+Libraries 
+•	What is NPM?
+Node js package manager
+•	What is contained in a Node JS Package?
+A package in Node.js contains all files you need for a module.
+
+How does Node.js handles a file
+
+•	Sends the task to the computers file system.
+•	Ready to handle the next request.
+•	When the file system has opened and read the file, the server returns the content to the client.
+•	It eliminates the waiting and simply continues with the next request.
+•	Runs single-threaded, non-blocking asynchronous programming, which is vey memory efficient.
+
+What Can Node.js Do?
+•	Node.js can generate dynamic page content.
+•	Node.js can create, open, read, write, delete, and close files on the server.
+•	Node.js can collect form data.
+•	Node.js can add, delete, modify data in your database.
+
+
+
+What is a Node.js File?
+•	Node.js files contain tasks that will be executed on certain events.
+•	A typical event is someone trying to access a port on the server.
+•	Node.js files must be initiated on the server before having any effect.
+•	Node.js files have extension ".js"
+
+
+
