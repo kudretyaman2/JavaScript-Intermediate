@@ -1,1 +1,481 @@
+JAVASCRIPT INTERMEDIATE
+WEEK 4
+REACT NATIVE
+
+WHAT IS REACT NATIVE?
+•	React Native is a mobile app development framework that uses JavaScript and React. With it, you can create apps for both iOS and Android, saving time and effort. It's a smart choice for cross-platform app development.
+WHAT IS IT USED FOR:
+•	Code reusability: With React Native, a significant portion of the codebase can be shared between different platforms.
+•	Cross-platform development: React Native allows developers to write code once and deploy it on both iOS and Android platforms.
+DEPENDENCIES: 
+•	In the case of React Native, dependencies are additional packages that are required to build and run React Native applications.
+o	Babel
+o	Webpack
+o	React-DOM
+o	Npm
+BUILDING THE INDEX PAGE
+•	To use React with an index.html file and script tags, you'll need to follow these steps:
+•	Set Up a New Project:
+•	 
+•	Create a new directory for your project and navigate to it in your terminal.
+Initialize a New npm Project:
+•	 
+•	Run the following command to initialize a new npm project. This will create a package.json file.
+bash
+Copy code
+npm init -y
+Install React and ReactDOM:
+•	 
+•	Install React and ReactDOM packages using npm.
+bash
+Copy code
+npm install react react-dom
+Create Your React Components:
+•	 
+•	Create your React components in .jsx files. For example, you might create a App.jsx file.
+jsx
+Copy code
+// App.jsx
+import React from 'react';
+•	 
+•	const App = () => {
+  return <h1>Hello, React!</h1>;
+};
+•	 
+•	export default App;
+Create Your index.html:
+•	 
+•	Create an index.html file in your project root directory. Add the necessary HTML structure and script tags.
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+<title>React App</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="./src/App.jsx" type="module"></script>
+<script src="./src/index.js" type="module"></script>
+</body>
+</html>
+Create index.js:
+•	 
+•	Create an index.js file in a src directory.
+jsx
+Copy code
+// src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+•	 
+•	ReactDOM.render(<App />, document.getElementById('root'));
+Set Up Babel for JSX:
+•	 
+•	In order to use JSX, you'll need to set up Babel to transpile it to regular JavaScript. Install the necessary packages:
+bash
+Copy code
+npm install @babel/core @babel/preset-env @babel/preset-react babel-loader --save-dev
+Create a .babelrc file in your project root and configure it to use the React preset:
+json
+Copy code
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+Set Up Webpack (Optional, but recommended for larger projects):
+•	Webpack helps in bundling your JavaScript files. Install it along with necessary loaders:
+bash
+Copy code
+npm install webpack webpack-cli webpack-dev-server babel-loader --save-dev
+Create a webpack.config.js file in your project root:
+js
+Copy code
+// webpack.config.js
+const path = require('path');
+•	module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+    ],
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 3000,
+  },
+};
+Update package.json Scripts:
+
+•	Add the following scripts to your package.json to start the development server:
+json
+Copy code
+"scripts": {
+  "start": "webpack serve --mode development"
+}
+Start the Development Server:
+•	 
+•	Run the following command to start the development server:
+bash
+Copy code
+npm start
+View Your React App
+•	Open your web browser and navigate to http://localhost:3000. You should see your React app running.
+•	To build the index page of your React application, you'll need to create an index.html file and configure it to load the necessary scripts. Follow these steps: 
+•	Create the index.html file:
+ 
+•	In your project directory, create an index.html file and open it in a code editor.
+
+•	html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>React App</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="dist/bundle.js"></script>
+</body>
+</html>
+This file serves as the entry point of your application.
+We have a div with the id root where the React application will be rendered.
+The script tag includes the bundled JavaScript file (bundle.js) which contains your React code.
+Configure Webpack (Optional):
+
+•	If you're using Webpack to bundle your application, make sure your webpack.config.js is correctly set up to output the bundled file to the dist directory.
+ 
+•	js
+Copy code
+// webpack.config.js
+const path = require('path');
+ 
+•	module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
+    },
+    // ... other configurations
+};
+Update package.json Scripts:
+•	 
+•	If you're using Webpack, add the following script to your package.json:
+•	 
+•	json
+Copy code
+"scripts": {
+    "start": "webpack serve --mode development"
+}
+This script allows you to start the development server.
+ 
+•	Start the Development Server:
+ 
+•	If you're using Webpack, run the following command to start the development server:
+
+•	bash
+Copy code
+npm start
+This will bundle your code and serve the application.
+•	 
+•	View Your React App:
+•	 
+•	Open your web browser and navigate to http://localhost:3000 (or the URL specified in your Webpack configuration if you customized it). You should see your React application running on the index page.
+•	 
+•	 
+•	To use React with an index.html file and script tags, you'll need to follow these steps:
+•	 
+•	Set Up a New Project:
+•	 
+•	Create a new directory for your project and navigate to it in your terminal.
+Initialize a New npm Project:
+•	 
+•	Run the following command to initialize a new npm project. This will create a package.json file.
+bash
+Copy code
+npm init -y
+Install React and ReactDOM:
+•	 
+•	Install React and ReactDOM packages using npm.
+bash
+Copy code
+npm install react react-dom
+Create Your React Components:
+•	 
+•	Create your React components in .jsx files. For example, you might create a App.jsx file.
+jsx
+Copy code
+// App.jsx
+import React from 'react';
+•	 
+•	const App = () => {
+  return <h1>Hello, React!</h1>;
+};
+•	 
+•	export default App;
+Create Your index.html:
+•	 
+•	Create an index.html file in your project root directory. Add the necessary HTML structure and script tags.
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+<title>React App</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="./src/App.jsx" type="module"></script>
+<script src="./src/index.js" type="module"></script>
+</body>
+</html>
+Create index.js:
+•	 
+•	Create an index.js file in a src directory.
+jsx
+Copy code
+// src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+•	 
+•	ReactDOM.render(<App />, document.getElementById('root'));
+Set Up Babel for JSX:
+•	 
+•	In order to use JSX, you'll need to set up Babel to transpile it to regular JavaScript. Install the necessary packages:
+bash
+Copy code
+npm install @babel/core @babel/preset-env @babel/preset-react babel-loader --save-dev
+Create a .babelrc file in your project root and configure it to use the React preset:
+json
+Copy code
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+Set Up Webpack (Optional, but recommended for larger projects):
+•	 
+•	Webpack helps in bundling your JavaScript files. Install it along with necessary loaders:
+bash
+Copy code
+npm install webpack webpack-cli webpack-dev-server babel-loader --save-dev
+Create a webpack.config.js file in your project root:
+js
+Copy code
+// webpack.config.js
+const path = require('path');
+
+•	module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+    ],
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 3000,
+  },
+};
+Update package.json Scripts:
+•	 
+•	Add the following scripts to your package.json to start the development server:
+json
+Copy code
+"scripts": {
+  "start": "webpack serve --mode development"
+}
+Start the Development Server:
+	 
+•	Run the following command to start the development server:
+bash
+Copy code
+npm start
+View Your React App:
+
+•	Open your web browser and navigate to http://localhost:3000. You should see your React app running.
+This setup allows you to use React with an index.html file and script tags. If you're working on a larger project, it's recommended to use a build tool like Webpack for better code organization and bundling.
+ 
+•	User
+Building the Index Page
+ChatGPT
+To build the index page of your React application, you'll need to create an index.html file and configure it to load the necessary scripts. Follow these steps:
+	 
+•	Create the index.html file:
+	 
+•	In your project directory, create an index.html file and open it in a code editor.
+	 
+•	html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>React App</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="dist/bundle.js"></script>
+</body>
+</html>
+This file serves as the entry point of your application.
+We have a div with the id root where the React application will be rendered.
+The script tag includes the bundled JavaScript file (bundle.js) which contains your React code.
+Configure Webpack (Optional):
+•	 
+•	If you're using Webpack to bundle your application, make sure your webpack.config.js is correctly set up to output the bundled file to the dist directory.
+•	 
+•	js
+Copy code
+// webpack.config.js
+const path = require('path');
+•	 
+•	module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
+    },
+    // ... other configurations
+};
+Update package.json Scripts:
+•	 
+•	If you're using Webpack, add the following script to your package.json:
+•	 
+•	json
+Copy code
+"scripts": {
+    "start": "webpack serve --mode development"
+}
+This script allows you to start the development server.
+•	 
+•	Start the Development Server:
+•	 
+•	If you're using Webpack, run the following command to start the development server:
+•	 
+•	bash
+Copy code
+npm start
+This will bundle your code and serve the application.
+•	 
+•	View Your React App:
+•	 
+•	Open your web browser and navigate to http://localhost:3000 (or the URL specified in your Webpack configuration if you customized it). You should see your React application running on the index page.
+•	 
+•	Pusher is a service that provides real-time web functionality. It allows you to add real-time features to your web and mobile applications with ease. Here's a general overview of what you can do with the Pusher app:
+•	 
+•	Real-Time Communication:
+•	 
+•	Pusher enables real-time communication between clients and servers. This means that changes made on one client's side are immediately reflected on other clients' screens without the need to refresh the page.
+Key Concepts:
+•	 
+•	Channels: Channels are the primary means of communication in Pusher. They represent a logical connection between clients and are used to subscribe to specific events.
+Events: Events are messages sent over channels. They can contain data and are used to trigger actions on the client side.
+Use Cases:
+•	 
+•	Chat Applications: Pusher is commonly used to build real-time chat applications where messages are instantly delivered to all connected users.
+Collaborative Editing: It can be used to enable multiple users to collaborate on documents simultaneously.
+Live Updates: Real-time dashboards, sports scores, or financial data updates.
+Gaming: Real-time multiplayer games where actions need to be broadcasted instantly to all players.
+Notifications: Instant notifications to users when specific events occur.
+Integration with Frontend:
+•	 
+•	To use Pusher in your frontend, you'll need to include the Pusher JavaScript library. You'll also need your unique Pusher credentials (App ID, Key, Secret).
+html
+Copy code
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script>
+  var pusher = new Pusher('YOUR_APP_KEY', {
+    cluster: 'YOUR_APP_CLUSTER'
+  });
+</script>
+Integration with Backend:
+•	 
+•	You'll need a server-side component to interact with Pusher, especially for handling authentication and broadcasting events.
+•	 
+•	For example, in Node.js, you might use the pusher package:
+•	 
+•	bash
+Copy code
+npm install pusher
+javascript
+Copy code
+const Pusher = require('pusher');
+•	 
+•	const pusher = new Pusher({
+  appId: 'YOUR_APP_ID',
+  key: 'YOUR_APP_KEY',
+  secret: 'YOUR_APP_SECRET',
+  cluster: 'YOUR_APP_CLUSTER',
+});
+The backend is responsible for handling authentication and broadcasting events to the relevant channels.
+Security and Authentication:
+•	 
+•	It's important to secure your Pusher app to prevent unauthorized access. Pusher provides mechanisms for private channels and presence channels, which require authentication on the server side.
+Scaling:
+•	 
+•	Pusher is designed to scale with your application. It can handle a large number of connected clients and a high volume of messages.
+Pricing:
+•	 
+•	Pusher offers a range of pricing plans, including a free tier with limited features. The pricing may vary based on the number of monthly active connections and messages.
+Dashboard:
+•	 
+•	Pusher provides a dashboard where you can monitor your app's usage, channels, and connected clients.
+
+BUILDING THE CHAT COMPONENTS:
+Ready-made building blocks that you can use to either create chat apps from scratch or add chat features to existing applications.
+	React Native chat app is a mobile app that allows users to chat with each other using the React Native framework. 
+	This type of app is popular because it allows developers to write code once and deploy it on both iOS and Android, saving time and effort.
+	In the code snippet, we initialize an empty array to hold the messages in the app. This makes it easy to add new messages to the app as they come in. Does that make sense?
+Chat components
+•	In this code snippet, we initialize the state with an empty `chats` array. This array will store the chat messages as they come in. 
+
+•	When the component mounts, we set up a connection to Pusher, a real-time messaging service. We subscribe to a Pusher channel called “chat-room” for our chat application. 
+
+•	We bind to the “new-message” event on the channel, which is triggered whenever a new chat message is received. When this event occurs, we append the new chat message to the `chats` array in the state.
+•	Additionally, we bind to the “connected” event on the Pusher client, which is triggered when the client establishes a fresh connection. In response to this event, we make a HTTP POST request to fetch all the chat messages from the server using the axios library. After receiving the chat messages in the response, we populate the `chats` array in the state with these messages.
+
+DISPLAYING CHAT MESSEGES:’
+The `ChatMessage` component is a simple component used to display chat messages within a chat application. It requires two essential props:
+1. Message: This prop represents the text content of the chat message. It holds the actual message that the component will display.
+2. Position: The `position` prop is used to determine the positioning of the message within the chat interface. It typically accepts one of two values: "right" or "left."
+   - If the `position` is set to "right," it indicates that the message is from the active user (the person who is currently using the chat app), and it will be displayed on the right side of the chat interface.
+   - If the `position` is set to "left," it indicates that the message is from another user (someone the active user is chatting with), and it will be displayed on the left side of the chat interface.
+
+In our chat app, we want to conditionally display the user's name before their chat message based on a few specific situations:
+
+1.	isFirst: If the current chat message is the first one in the conversation, we'll show the user's name.
+2.	!inSequence: If the current chat message comes after a message from another user (so it's not in sequence), we'll display the user's name.
+3.	hasDelay: If there's a delay of over 1 minute from the previous message by the same user, we'll also show the user's name.
+For displaying emojis, we're using the String.fromCodePoint() method to get emojis based on the code points we defined earlier. This method is available in modern JavaScript (ES6).
+
 
